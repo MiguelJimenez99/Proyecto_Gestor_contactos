@@ -237,19 +237,13 @@ exports.getContactFavorite = async (req, res, next) => {
   try {
     const userId = req.userId;
 
-    const contact = await Contact.find({ favorite: true });
+    const contact = await Contact.find({ favorite: true, userId: userId });
 
     if (contact == "" || contact.length == 0) {
       const error = new Error("No tienes contactos favoritos");
       error.statusCode = 400;
       return next(error);
     }
-
-    // if (contact.userId.toString() != userId.toString()) {
-    //   return res.status(403).json({
-    //     message: "No tienes permisos para realizar esta accion",
-    //   });
-    // }
 
     res.status(200).json({
       message: "Tus favoritos",
