@@ -1,0 +1,25 @@
+{
+  "name": "gestor_contactos",
+  "version": "1.0.0",
+  "description": "Proyecto por autenticacion basica donde el usuario va a poder gestionar sus contactos, eliminar, editar listar y agregar.",
+  "license": "ISC",
+  "author": "Miguel Jimenez",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/main.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.3",
+    "nodemon": "^3.1.10",
+    "winston": "^3.17.0"
+  }
+}
