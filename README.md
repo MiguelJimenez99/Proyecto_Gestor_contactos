@@ -40,13 +40,13 @@ node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 ---
 ### Ejecutar la aplicacion:
 
-# modo desarrollo
+### modo desarrollo
 
 ```bash
 npm run dev
 ```
 
-# modo produccion
+### modo produccion
 
 ```bash
 npm start
@@ -54,12 +54,12 @@ npm start
 ---
 ### Endpoints principales:
 
-# Autenticación:
+### Autenticación:
 
 - POST `/api/auth/signUp`: Registro de usuario.
 - POST `/api/auth/signIn`: Inicio de sesión y obtener token.
 
-# Contactos:
+### Contactos:
 
 - GET `/api/favorites`: Obtiene los contactos favoritos.
 - GET `/api/contact/:id`: Obtiene un contacto por su ID.
@@ -69,7 +69,7 @@ npm start
 - PATCH `/api/contactFavorite/:id`: Marca un contacto como favorito.
 - DELETE `/api/deleteContact/:id`: Elimina un contacto por su ID.
 
-# Validaciones:
+### Validaciones:
 
 - Campos obligatorios: `name`, `email`, `phone`.
 - El correo debe tener formato válido y ser único.
