@@ -79,6 +79,6 @@ npm start
 
 ### Author: 
 
-Miguel Jimenez.
-GitHub: https://github.com/MiguelJimenez99
-Correo: migueljimenez1799@gmail.com
+- Miguel Jimenez.
+- GitHub: https://github.com/MiguelJimenez99
+- Correo: migueljimenez1799@gmail.com
