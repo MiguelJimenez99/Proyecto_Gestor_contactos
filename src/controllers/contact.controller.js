@@ -74,6 +74,14 @@ exports.postContact = async (req, res) => {
       });
     }
 
+    //validamos si el archivo se subio correctamennte
+    if (req.file) {
+      return res.status(200).json({
+        message: "Archivo subido correctamente",
+        data: req.file,
+      });
+    }
+
     //validamos si el contacto existe
     const existContact = await Contact.findOne({ phone });
     if (existContact) {
@@ -96,6 +104,7 @@ exports.postContact = async (req, res) => {
       email,
       phone,
       userId: IdUser,
+      avatar: req.file ? req.file.path : "../../uploads/image_profile.avif",
     });
 
     await newContact.save();
@@ -153,9 +162,15 @@ exports.updateContact = async (req, res) => {
         name,
         email,
         phone,
+        avatar: req.file ? req.file.path : "",
       },
       { new: true }
     );
+
+    //validamos que la imagen se subio correctamente
+    if (req.file) {
+      console.log("Archivo subido correctamente");
+    }
 
     res.status(200).json({
       message: "Usuario actualizado correctamente",
@@ -233,7 +248,7 @@ exports.contactFavorite = async (req, res) => {
 };
 
 //controlador para filtrar los usuarios favoritos.
-exports.getContactFavorite = async (req, res, next) => {
+exports.getContactFavorites = async (req, res, next) => {
   try {
     const userId = req.userId;
 
@@ -251,7 +266,7 @@ exports.getContactFavorite = async (req, res, next) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "Erro en el servidor",
+      message: "Error en el servidor",
       error: error.message,
     });
   }

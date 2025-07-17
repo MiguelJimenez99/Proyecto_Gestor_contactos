@@ -9,18 +9,30 @@ const {
   updateContact,
   deleteContact,
   contactFavorite,
-  getContactFavorite,
+  getContactFavorites,
 } = require("../controllers/contact.controller");
 
 const { validateContact } = require("../validators/contact.validator");
+const upload = require("../middlewares/upload.middlerware");
 const validate = require("../middlewares/validator.middleware");
-const { route } = require("./auth.routes");
 
-router.get("/favorites", verifyToken, getContactFavorite);
+router.get("/favorites", verifyToken, getContactFavorites);
 router.get("/contacts", verifyToken, getContactAll);
 router.get("/contact/:id", verifyToken, getContact);
-router.post("/newContact", validateContact, validate, verifyToken, postContact);
-router.put("/updateContact/:id", verifyToken, updateContact);
+router.post(
+  "/newContact",
+  verifyToken,
+  upload.single("avatar"),
+  validateContact,
+  validate,
+  postContact
+);
+router.put(
+  "/updateContact/:id",
+  verifyToken,
+  upload.single("avatar"),
+  updateContact
+);
 router.delete("/deleteContact/:id", verifyToken, deleteContact);
 router.patch("/contactFavorite/:id", verifyToken, contactFavorite);
 
