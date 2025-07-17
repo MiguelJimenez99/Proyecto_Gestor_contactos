@@ -74,14 +74,6 @@ exports.postContact = async (req, res) => {
       });
     }
 
-    //validamos si el archivo se subio correctamennte
-    if (req.file) {
-      return res.status(200).json({
-        message: "Archivo subido correctamente",
-        data: req.file,
-      });
-    }
-
     //validamos si el contacto existe
     const existContact = await Contact.findOne({ phone });
     if (existContact) {
